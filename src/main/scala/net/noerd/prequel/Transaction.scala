@@ -22,23 +22,23 @@ import net.noerd.prequel.ResultSetRowImplicits.row2Duration
 /**
  * A Transaction is normally created by the InTransaction object and can be
  * used to execute one or more queries against the database. Once the block
- * passed to InTransaction is succesfully executed the transaction is auto-
- * matically committed. And if some exception is throws during execution the 
- * transaction is rollbacked. 
+ * passed to InTransaction is successfully executed the transaction is auto-
+ * matically committed. If some exception is thrown during execution the 
+ * transaction is rolled back. 
  * 
  * @throws SQLException all methods executing queries will throw SQLException 
  *         if the query was not properly formatted or something went wrong in 
  *         the database during execution.
  *
- * @throws IllegalFormatException: Will be throw by all method if the format 
- *         string is invalid or if there is not enough parameters.
+ * @throws IllegalFormatException: Will be thrown by all methods if the format 
+ *         string is invalid or if there are not enough parameters.
  */
 class Transaction( val connection: Connection, val formatter: SQLFormatter ) {
     
     /**
      * Returns all records returned by the query after being converted by the
-     * given block. All objects are kept in memory to this method is no suited
-     * for very big result sets. Use selectAndProcess if you need to process 
+     * given block. All objects are kept in memory so this method is not suited
+     * to very big result sets. Use selectAndProcess if you need to process 
      * bigger datasets.
      * 
      * @param sql query that should return records
@@ -91,12 +91,12 @@ class Transaction( val connection: Connection, val formatter: SQLFormatter ) {
     }
     
     /** 
-     * Convience method for intepreting the first column of the first record as a long
+     * Convenience method for interpreting the first column of the first record as a long
      * 
      * @param sql is a query that must return at least one record
      * @param params are the optional parameters of the query
      * @throws RuntimeException if the value is null
-     * @throws SQLException if the value in the first column could not be intepreted as a long
+     * @throws SQLException if the value in the first column could not be interpreted as a long
      * @throws NoSuchElementException if the query did not return any records.
      */
     def selectLong( sql: String, params: Formattable* ): Long = {
@@ -104,12 +104,12 @@ class Transaction( val connection: Connection, val formatter: SQLFormatter ) {
     }
 
     /** 
-     * Convience method for intepreting the first column of the first record as a Int
+     * Convenience method for interpreting the first column of the first record as a Int
      * 
      * @param sql is a query that must return at least one record
      * @param params are the optional parameters of the query
      * @throws RuntimeException if the value is null
-     * @throws SQLException if the value in the first column could not be intepreted as a Int
+     * @throws SQLException if the value in the first column could not be interpreted as a Int
      * @throws NoSuchElementException if the query did not return any records.
      */
     def selectInt( sql: String, params: Formattable* ): Int = {
@@ -117,12 +117,12 @@ class Transaction( val connection: Connection, val formatter: SQLFormatter ) {
     }
 
     /** 
-     * Convience method for intepreting the first column of the first record as a Boolean
+     * Convenience method for interpreting the first column of the first record as a Boolean
      * 
      * @param sql is a query that must return at least one record
      * @param params are the optional parameters of the query
      * @throws RuntimeException if the value is null
-     * @throws SQLException if the value in the first column could not be intepreted as a Boolean
+     * @throws SQLException if the value in the first column could not be interpreted as a Boolean
      * @throws NoSuchElementException if the query did not return any records.
      */
     def selectBoolean( sql: String, params: Formattable* ): Boolean = {
@@ -130,12 +130,12 @@ class Transaction( val connection: Connection, val formatter: SQLFormatter ) {
     }
     
     /** 
-     * Convience method for intepreting the first column of the first record as a String
+     * Convenience method for interpreting the first column of the first record as a String
      * 
      * @param sql is a query that must return at least one record
      * @param params are the optional parameters of the query
      * @throws RuntimeException if the value is null
-     * @throws SQLException if the value in the first column could not be intepreted as a String
+     * @throws SQLException if the value in the first column could not be interpreted as a String
      * @throws NoSuchElementException if the query did not return any records.
      */
     def selectString( sql: String, params: Formattable* ): String = {
@@ -143,12 +143,12 @@ class Transaction( val connection: Connection, val formatter: SQLFormatter ) {
     }
 
     /** 
-     * Convience method for intepreting the first column of the first record as a Float
+     * Convenience method for interpreting the first column of the first record as a Float
      * 
      * @param sql is a query that must return at least one record
      * @param params are the optional parameters of the query
      * @throws RuntimeException if the value is null
-     * @throws SQLException if the value in the first column could not be intepreted as a Float
+     * @throws SQLException if the value in the first column could not be interpreted as a Float
      * @throws NoSuchElementException if the query did not return any records.
      */
     def selectFloat( sql: String, params: Formattable* ): Float = {
@@ -156,12 +156,12 @@ class Transaction( val connection: Connection, val formatter: SQLFormatter ) {
     }
 
     /** 
-     * Convience method for intepreting the first column of the first record as a Double
+     * Convenience method for interpreting the first column of the first record as a Double
      * 
      * @param sql is a query that must return at least one record
      * @param params are the optional parameters of the query
      * @throws RuntimeException if the value is null
-     * @throws SQLException if the value in the first column could not be intepreted as a Double
+     * @throws SQLException if the value in the first column could not be interpreted as a Double
      * @throws NoSuchElementException if the query did not return any records.
      */
     def selectDouble( sql: String, params: Formattable* ): Double = {
@@ -169,12 +169,12 @@ class Transaction( val connection: Connection, val formatter: SQLFormatter ) {
     }
 
     /** 
-     * Convience method for intepreting the first column of the first record as a DateTime
+     * Convenience method for interpreting the first column of the first record as a DateTime
      * 
      * @param sql is a query that must return at least one record
      * @param params are the optional parameters of the query
      * @throws RuntimeException if the value is null
-     * @throws SQLException if the value in the first column could not be intepreted as a DateTime
+     * @throws SQLException if the value in the first column could not be interpreted as a DateTime
      * @throws NoSuchElementException if the query did not return any records.
      */
     def selectDateTime( sql: String, params: Formattable* ): DateTime = {
@@ -182,12 +182,12 @@ class Transaction( val connection: Connection, val formatter: SQLFormatter ) {
     }
 
     /** 
-     * Convience method for intepreting the first column of the first record as a Duration
+     * Convenience method for interpreting the first column of the first record as a Duration
      * 
      * @param sql is a query that must return at least one record
      * @param params are the optional parameters of the query
      * @throws RuntimeException if the value is null
-     * @throws SQLException if the value in the first column could not be intepreted as a Duration
+     * @throws SQLException if the value in the first column could not be interpreted as a Duration
      * @throws NoSuchElementException if the query did not return any records.
      */
     def selectDuration( sql: String, params: Formattable* ): Duration = {
@@ -226,14 +226,14 @@ class Transaction( val connection: Connection, val formatter: SQLFormatter ) {
     }
     
     /**
-     * Rollbacks the Transaction. 
+     * Rolls back the Transaction. 
      *
      * @throws SQLException if transaction could not be rollbacked
      */
     def rollback(): Unit = connection.rollback()
 
     /**
-     * Commits all changed done in the Transaction. 
+     * Commits all changes in the Transaction. 
      *
      * @throws SQLException if transaction could not be committed.
      */

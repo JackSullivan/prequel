@@ -12,7 +12,7 @@ import org.joda.time.Duration
 
 /**
  * Wraps a ResultSet in a row context. The ResultSetRow gives access
- * to the current row with no possibility to change row. The data of
+ * to the current row with no possibility to change rows. The data of
  * the row can be accessed though the next<Type> methods which return
  * the optional value of the next column.
  */

@@ -8,12 +8,12 @@ package net.noerd.prequel
 object InTransaction { 
     /**
      * Given a block and a DatabaseConfig a Transaction will be created and 
-     * passed to the block. If the block is executed succesfully the transaction 
-     * will be committed but if an exception is throw it will be rollbacked 
-     * immediately and rethrow the exception.
+     * passed to the block. If the block is executed successfully the transaction 
+     * will be committed but if an exception is thrown it will be rolled back 
+     * immediately and will rethrow the exception.
      *
      * @throws Any Exception that the block may generate.
-     * @throws SQLException if the connection could not be committed, rollbacked
+     * @throws SQLException if the connection could not be committed, rolled back
      *         or closed.
      */
     def apply[T]( block: ( Transaction ) => T )( config: DatabaseConfig ): T = {
