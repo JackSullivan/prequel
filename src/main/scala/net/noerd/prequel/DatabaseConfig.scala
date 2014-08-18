@@ -32,7 +32,6 @@ object IsolationLevels {
  * Configures how to connect to the database and how the connection 
  * should then be pooled.
  *
- * @param driver is a full class name of the JDBC Driver used.
  * @param jdbcURL is a qualified connection string with the db-type encoded (jdbc:psql...)
  * @param username to use when connecting to the db
  * @param password to use when connecting to the db
@@ -40,7 +39,6 @@ object IsolationLevels {
  * @param poolConfig configures how the connections should be pooled.
  */
 final case class DatabaseConfig(
-    val driver: String, 
     val jdbcURL: String, 
     val username: String = "", 
     val password: String = "",
@@ -49,8 +47,6 @@ final case class DatabaseConfig(
     val poolConfig: PoolConfig = new PoolConfig
 ) {
     
-    // Make sure that the class is available
-    Class.forName( driver )
 
     /**
      * Execute the block in a transaction against the db defined by

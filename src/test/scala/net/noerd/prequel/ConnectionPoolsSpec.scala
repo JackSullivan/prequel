@@ -9,15 +9,15 @@ import org.scalatest.BeforeAndAfterEach
 class ConnectionPoolsSpec extends FunSpec with ShouldMatchers with BeforeAndAfterEach {
     
     val config1 = DatabaseConfig( 
-        driver = "org.hsqldb.jdbc.JDBCDriver",
+        //driver = "org.hsqldb.jdbc.JDBCDriver",
         jdbcURL = "jdbc:hsqldb:mem:config1"
     )
     val config1Copy = DatabaseConfig( 
-        driver = "org.hsqldb.jdbc.JDBCDriver",
+        //driver = "org.hsqldb.jdbc.JDBCDriver",
         jdbcURL = "jdbc:hsqldb:mem:config1"
     )
     val config2 = DatabaseConfig( 
-        driver = "org.hsqldb.jdbc.JDBCDriver",
+        //driver = "org.hsqldb.jdbc.JDBCDriver",
         jdbcURL = "jdbc:hsqldb:mem:config2"
     )
 
