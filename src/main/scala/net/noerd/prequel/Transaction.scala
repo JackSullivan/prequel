@@ -64,7 +64,6 @@ class Transaction( val connection: Connection, val formatter: SQLFormatter ) {
         _selectIntoBuffer( None, sql, params.toSeq )( block )
     }
 
-    
     /**
      * Returns the first record returned by the query after being converted by the
      * given block. If the query does not return anything None is returned.
@@ -244,10 +243,12 @@ class Transaction( val connection: Connection, val formatter: SQLFormatter ) {
         sql: String, params: Seq[ Formattable ]
     )( block: ( ResultSetRow ) => T ): Unit = {
         connection.usingStatement { statement =>
-            val rs = statement.executeQuery( formatter.formatSeq( sql, params ) )
+            val query = formatter.formatSeq(sql, params)
+            //println("Finalized Query: %s".format(query))
+            val rs = statement.executeQuery(query)
             val append = buffer.isDefined
-            
-            while( rs.next ) {    
+
+            while( rs.next ) {
                 val value = block( ResultSetRow( rs ) )
                 if( append ) buffer.get.append( value )
             }
