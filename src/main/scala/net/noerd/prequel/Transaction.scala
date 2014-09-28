@@ -205,6 +205,16 @@ class Transaction( val connection: Connection, val formatter: SQLFormatter ) {
             statement.executeUpdate( formatter.formatSeq( sql, params.toSeq ) )
         }
     }
+
+  /**
+   * executes the given query string in the raw without any escaping.
+   *
+   * @param sql query string that needs no escaping
+   * @return the number of affected records
+   */
+    def executeRaw(sql:String):Int = connection.usingStatement { statement =>
+      statement.executeUpdate(sql)
+    }
     
     /**
      * Will pass a ReusableStatement to the given block. This block
